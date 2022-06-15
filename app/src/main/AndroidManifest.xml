@@ -18,6 +18,9 @@
         android:theme="@style/Theme.PAYBACK"
         tools:targetApi="31">
         <activity
+            android:name=".activities.HitDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.HitContentsActivity"
             android:exported="false" />
         <activity

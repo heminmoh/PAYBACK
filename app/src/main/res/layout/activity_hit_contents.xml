@@ -4,11 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".activities.HitContentsActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        tools:ignore="MissingConstraints">
+        <EditText
+            android:id="@+id/SearchEditText"
+            android:layout_width="0dp"
+            android:layout_weight="7"
+            android:layout_height="match_parent"
+            android:background="@drawable/search_edittext"
+            android:textColor="@color/black"
+            android:inputType="text"
+            android:hint="search..."
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textStyle="bold"
+            android:textCursorDrawable="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="4dp"/>
+        <ImageView
+            android:id="@+id/imgSearch"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/search" />
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/HitsRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:background="@color/white"
         tools:listitem="@layout/hit_item">
 
     </androidx.recyclerview.widget.RecyclerView>

@@ -29,8 +29,7 @@ class HitViewModel : ViewModel() {
     {
         viewModelScope.launch (Dispatchers.IO) {
             val destinationService  = ServiceBuilder.buildService(APIInterface::class.java)
-            val requestCall =destinationService.getAffectedHitsList()
-            //make network call asynchronously
+            val requestCall =destinationService.getAffectedHitsList(id)
             requestCall.enqueue(object : Callback<hitmodel> {
                 @RequiresApi(Build.VERSION_CODES.O)
                 override fun onResponse(call: retrofit2.Call<hitmodel>, response: Response<hitmodel>) {
