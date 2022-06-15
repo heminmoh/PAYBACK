@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="headersections">18dp</dimen>
+    <dimen name="username">16dp</dimen>
+    <dimen name="tag">16dp</dimen>
+    <dimen name="connection">16dp</dimen>
+    <dimen name="title">20dp</dimen>
+
+
+
+</resources>
