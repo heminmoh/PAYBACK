@@ -2,6 +2,7 @@ package com.example.payback.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -15,12 +16,15 @@ import com.example.payback.models.hitmodel
 import com.example.payback.models.hits
 import com.example.payback.utilities.CheckInternetConnection
 import com.example.payback.viewmodels.HitViewModel
+import com.example.payback.utilities.PayBackProgressDialog
 
 class HitContentsActivity : AppCompatActivity() {
     lateinit var checkconnectionInternetConnection: CheckInternetConnection
 
     lateinit var HitsRecycler : RecyclerView
-
+    private val CheckNetwork : String ="Check Network"
+    private val NoDataFetched : String ="No Data Fetched ..."
+    lateinit var progressDialog : PayBackProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,13 +39,16 @@ class HitContentsActivity : AppCompatActivity() {
 
         if(checkconnectionInternetConnection.checkForInternet(this@HitContentsActivity))
         {
-
+            progressDialog = PayBackProgressDialog()
+            progressDialog.show(this,"Please Wait...")
             initViewModel()
         }
         else
         {
-            Toast.makeText(this@HitContentsActivity,"Check Network", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@HitContentsActivity,CheckNetwork, Toast.LENGTH_SHORT).show()
         }
+
+//        HitsRecycler.oncl(View.)
 
     }
     fun initViewModel()
@@ -51,35 +58,18 @@ class HitContentsActivity : AppCompatActivity() {
             if (it != null)
             {
                 MakeViewDesign(it)
-//                progressDialog.dialog.dismiss()
+                progressDialog.dialog.dismiss()
             }
             else{
-                Toast.makeText(this,"No Fetch Data...", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, NoDataFetched, Toast.LENGTH_SHORT).show()
             }
         })
         viewmodel.MakeApiCall()
     }
 
-    fun MakeViewDesign(hitsList : hitmodel?)
+    private fun MakeViewDesign(hitsList : hitmodel?)
     {
-        val data = ArrayList<hits>()
-
-
-        //Push attribute objects to a List of Attribute model
-        for (i in 0 until hitsList?.hits?.size!!)
-        {
-            data.add(
-                hits("","","", hitsList.hits[i].tags, hitsList.hits[i].previewURL,
-                    0,0,"","","",
-                    "",0,0,0,0,0,0,
-                    0,0,0, hitsList.hits[i].user,""
-                    ))
-        }
-
-
-        val adapter = HitsContentsAdapter(data)
-
-        // Setting the Adapter with the recyclerview
+        val adapter = hitsList?.hits?.let { HitsContentsAdapter(it) }
         HitsRecycler.adapter = adapter
     }
 }

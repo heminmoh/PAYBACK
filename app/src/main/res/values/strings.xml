@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">PAYBACK</string>
     <string name="Btn_PAYBACK">PAYBACK Coding Challenge</string>
+    <string name="Check_Network">Check Network</string>
 </resources>

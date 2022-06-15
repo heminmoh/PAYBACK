@@ -15,8 +15,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var CheckConnectionInternetConnection: CheckInternetConnection
     private lateinit var LiveDataConnection : LiveDataInternetConnections
-
-
     private lateinit var textviewConnect : TextView
     private lateinit var textviewdisconnect : TextView
     private lateinit var Button_Intent : Button

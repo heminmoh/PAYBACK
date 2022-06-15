@@ -37,13 +37,17 @@ class HitsContentsAdapter (private val HitsContentList: List<hits>) :RecyclerVie
         var TagTextView      = itemView.findViewById<TextView>(R.id.TagTextView)
 
 
-        
+
 
 
         fun bind(Hititems: hits) {
 
-            UserNameTextView.text = Hititems.user
-            TagTextView.text = Hititems.tags
+            val Username : String? = Hititems.user
+            val Tags : String? = Hititems.tags
+
+
+            UserNameTextView.text = "UserName: $Username"
+            TagTextView.text = "Tags: $Tags"
             Picasso.get().load(Hititems.previewURL).into(HitImageView)
         }
 
