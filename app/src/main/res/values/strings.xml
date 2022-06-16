@@ -2,4 +2,7 @@
     <string name="app_name">PAYBACK</string>
     <string name="Btn_PAYBACK">PAYBACK Coding Challenge</string>
     <string name="Check_Network">Check Network</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="SearchField">Search:</string>
 </resources>

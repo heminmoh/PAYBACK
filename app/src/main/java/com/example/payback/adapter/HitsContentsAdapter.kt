@@ -1,9 +1,10 @@
 package com.example.payback.adapter
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
-import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +13,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.payback.R
-import com.example.payback.activities.HitContentsActivity
 import com.example.payback.activities.HitDetailActivity
-import com.example.payback.models.hitmodel
 import com.example.payback.models.hits
 import com.squareup.picasso.Picasso
-import kotlinx.serialization.Serializable
+import kotlinx.coroutines.NonCancellable.cancel
+
 
 class HitsContentsAdapter (private val HitsContentList: List<hits>) :RecyclerView.Adapter<HitsContentsAdapter.ViewHolder>() {
 
@@ -37,14 +37,28 @@ class HitsContentsAdapter (private val HitsContentList: List<hits>) :RecyclerVie
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.setOnClickListener(View.OnClickListener {
-            val intent = Intent(context, HitDetailActivity::class.java)
-            intent.putExtra("ImageBiggerVersion", HitsContentList[position].largeImageURL)
-            intent.putExtra("UserName", HitsContentList[position].user)
-            intent.putExtra("Tags", HitsContentList[position].tags)
-            intent.putExtra("NumberOfLikes", HitsContentList[position].likes.toString())
-            intent.putExtra("NumberOfDownloads", HitsContentList[position].downloads.toString())
-            intent.putExtra("NumberOfComments", HitsContentList[position].comments.toString())
-            context?.startActivity(intent)
+            val builder = AlertDialog.Builder(context)
+            builder.setIcon(R.drawable.paybacklogo)
+            builder.setTitle("Are You Sure?")
+            builder.setMessage("You want to see more details...")
+            builder.setPositiveButton(R.string.yes) { _, _ ->
+                val intent = Intent(context, HitDetailActivity::class.java)
+                    intent.putExtra("ImageBiggerVersion", HitsContentList[position].largeImageURL)
+                    intent.putExtra("UserName", HitsContentList[position].user)
+                    intent.putExtra("Tags", HitsContentList[position].tags)
+                    intent.putExtra("NumberOfLikes", HitsContentList[position].likes.toString())
+                    intent.putExtra("NumberOfDownloads", HitsContentList[position].downloads.toString())
+                    intent.putExtra("NumberOfComments", HitsContentList[position].comments.toString())
+                    context?.startActivity(intent)
+            }
+
+            builder.setNegativeButton(R.string.no) { dialog, _ -> dialog.dismiss()   }
+
+
+            builder.show()
+
+
+
         })
         return holder.bind(HitsContentList[position])
     }

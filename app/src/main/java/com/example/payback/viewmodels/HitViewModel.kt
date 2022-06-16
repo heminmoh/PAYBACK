@@ -14,6 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Callback
 import retrofit2.Response
+import android.graphics.Color;
 
 class HitViewModel : ViewModel() {
     var recyclerlivedata : MutableLiveData<hitmodel> = MutableLiveData()

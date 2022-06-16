@@ -11,7 +11,7 @@
         android:id="@+id/attributes"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:background="@color/light_blue_600"
+        android:background="@color/light_blue_100"
         android:fontFamily="@font/roboto_regular"
         android:orientation="vertical">
     <ImageView
@@ -31,7 +31,8 @@
         android:layout_marginRight="7dp"
         android:lines="1"
         android:text="@={HitViewModel.userName}}"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:fontFamily="@font/roboto_regular"
         android:textSize="@dimen/username" />
         <TextView
@@ -42,7 +43,8 @@
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
             android:lines="1"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:fontFamily="@font/roboto_regular"
             android:textSize="@dimen/tag" />
     </LinearLayout>
