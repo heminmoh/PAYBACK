@@ -74,28 +74,5 @@ class HitsContentsAdapter ( private val HitsContentList: List<Hits>) :RecyclerVi
         Picasso.get().load(imageUrl).into(image)
     }
 
-//    class ViewHolder(itemView : View) :RecyclerView.ViewHolder(itemView) {
-//
-//
-//        var HitImageView     = itemView.findViewById<ImageView>(R.id.HitItemImage)
-//        var UserNameTextView = itemView.findViewById<TextView>(R.id.UserNameTextView)
-//        var TagTextView      = itemView.findViewById<TextView>(R.id.TagTextView)
-//
-//
-//
-//
-//
-//        fun bind(Hititems: hits) {
-//
-//            val Username : String? = Hititems.user
-//            val Tags : String? = Hititems.tags
-//
-//
-//            UserNameTextView.text = "UserName: $Username"
-//            TagTextView.text = "Tags: $Tags"
-//            Picasso.get().load(Hititems.previewURL).into(HitImageView)
-//        }
-//
-//    }
 
 }
