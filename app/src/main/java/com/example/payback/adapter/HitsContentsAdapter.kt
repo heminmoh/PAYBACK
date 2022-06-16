@@ -11,22 +11,27 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.databinding.Bindable
+import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.payback.R
 import com.example.payback.activities.HitDetailActivity
-import com.example.payback.models.hits
+import com.example.payback.models.Hits
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.NonCancellable.cancel
+import com.example.payback.databinding.HitItemBinding
+import com.example.payback.utilities.LargeNewsViewHolder
 
 
-class HitsContentsAdapter (private val HitsContentList: List<hits>) :RecyclerView.Adapter<HitsContentsAdapter.ViewHolder>() {
+class HitsContentsAdapter ( private val HitsContentList: List<Hits>) :RecyclerView.Adapter<LargeNewsViewHolder>() {
 
     var context: Context? = null
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    private lateinit var binding: HitItemBinding
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LargeNewsViewHolder {
 
-        val view  = LayoutInflater.from(parent.context).inflate(R.layout.hit_item,parent,false)
+        binding = HitItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         context = parent.context
-        return ViewHolder(view)
+        return LargeNewsViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -35,7 +40,7 @@ class HitsContentsAdapter (private val HitsContentList: List<hits>) :RecyclerVie
     }
 
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: LargeNewsViewHolder, position: Int) {
         holder.itemView.setOnClickListener(View.OnClickListener {
             val builder = AlertDialog.Builder(context)
             builder.setIcon(R.drawable.paybacklogo)
@@ -62,27 +67,35 @@ class HitsContentsAdapter (private val HitsContentList: List<hits>) :RecyclerVie
         })
         return holder.bind(HitsContentList[position])
     }
-    class ViewHolder(itemView : View) :RecyclerView.ViewHolder(itemView) {
-
-
-        var HitImageView     = itemView.findViewById<ImageView>(R.id.HitItemImage)
-        var UserNameTextView = itemView.findViewById<TextView>(R.id.UserNameTextView)
-        var TagTextView      = itemView.findViewById<TextView>(R.id.TagTextView)
-
-
-
-
-
-        fun bind(Hititems: hits) {
-
-            val Username : String? = Hititems.user
-            val Tags : String? = Hititems.tags
-
-
-            UserNameTextView.text = "UserName: $Username"
-            TagTextView.text = "Tags: $Tags"
-            Picasso.get().load(Hititems.previewURL).into(HitImageView)
-        }
-
+    @BindingAdapter("imageUrl")
+    fun loadImage(view: View,
+                  imageUrl: String?) {
+        val image: ImageView = view as ImageView
+        Picasso.get().load(imageUrl).into(image)
     }
+
+//    class ViewHolder(itemView : View) :RecyclerView.ViewHolder(itemView) {
+//
+//
+//        var HitImageView     = itemView.findViewById<ImageView>(R.id.HitItemImage)
+//        var UserNameTextView = itemView.findViewById<TextView>(R.id.UserNameTextView)
+//        var TagTextView      = itemView.findViewById<TextView>(R.id.TagTextView)
+//
+//
+//
+//
+//
+//        fun bind(Hititems: hits) {
+//
+//            val Username : String? = Hititems.user
+//            val Tags : String? = Hititems.tags
+//
+//
+//            UserNameTextView.text = "UserName: $Username"
+//            TagTextView.text = "Tags: $Tags"
+//            Picasso.get().load(Hititems.previewURL).into(HitImageView)
+//        }
+//
+//    }
+
 }

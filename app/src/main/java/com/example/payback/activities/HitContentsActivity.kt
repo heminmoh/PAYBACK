@@ -9,6 +9,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.example.payback.R
 import androidx.lifecycle.ViewModelProvider
@@ -20,9 +21,12 @@ import com.example.payback.utilities.CheckInternetConnection
 import com.example.payback.utilities.PayBackProgressDialog
 import com.example.payback.viewmodels.HitViewModel
 import java.security.AccessController.getContext
+import com.example.payback.databinding.ActivityHitContentsBinding
 
 
 class HitContentsActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityHitContentsBinding
+
     lateinit var checkconnectionInternetConnection: CheckInternetConnection
 
     lateinit var HitsRecycler : RecyclerView
@@ -35,9 +39,10 @@ class HitContentsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_hit_contents)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_hit_contents)
 
-        HitsRecycler = findViewById (R.id.HitsRecycler)
+        HitsRecycler = binding.HitsRecycler
+
         ImageSearch = findViewById (R.id.imgSearch)
         SearchEditText = findViewById (R.id.SearchEditText)
         SearchEditText.setText("fruits")
@@ -89,5 +94,6 @@ class HitContentsActivity : AppCompatActivity() {
     {
         val adapter = hitsList?.hits?.let { HitsContentsAdapter(it) }
         HitsRecycler.adapter = adapter
+
     }
 }

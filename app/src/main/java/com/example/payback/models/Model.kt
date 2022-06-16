@@ -1,7 +1,7 @@
 package com.example.payback.models
 
-data class hitmodel(val total:Int?,val totalHits: Int?,val hits: List<hits>?)
-data class hits(
+data class hitmodel(val total:Int?,val totalHits: Int?,val hits: List<Hits>?)
+data class Hits(
     val id: String?,
     val pageURL: String?,
     val type: String?,
