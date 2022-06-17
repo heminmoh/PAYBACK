@@ -25,6 +25,7 @@ import com.example.payback.databinding.ActivityHitContentsBinding
 
 
 class HitContentsActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityHitContentsBinding
 
     lateinit var checkconnectionInternetConnection: CheckInternetConnection
@@ -32,9 +33,7 @@ class HitContentsActivity : AppCompatActivity() {
     lateinit var HitsRecycler : RecyclerView
     lateinit var SearchEditText : EditText
     lateinit var ImageSearch : ImageView
-    private val CheckNetwork : String ="Check Network"
-    private val ProgressBarDialog : String ="Please Wait..."
-    private val NoDataFetched : String ="No Data Fetched ..."
+
     lateinit var progressDialog : PayBackProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,11 +59,12 @@ class HitContentsActivity : AppCompatActivity() {
         }
         else
         {
-            Toast.makeText(this@HitContentsActivity,CheckNetwork, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@HitContentsActivity,R.string.CheckNetwork, Toast.LENGTH_SHORT).show()
         }
 
         ImageSearch.setOnClickListener(View.OnClickListener {
-            initViewModel(SearchEditText.text.toString())
+            var Searched_Data_Text = SearchEditText.text.toString()
+            initViewModel(Searched_Data_Text)
         })
 
     }
@@ -74,16 +74,15 @@ class HitContentsActivity : AppCompatActivity() {
     fun initViewModel(SearchedText : String)
     {
         progressDialog = PayBackProgressDialog()
-        progressDialog.show(this,ProgressBarDialog)
-        val viewmodel = ViewModelProvider(this)[HitViewModel::class.java]
+        progressDialog.show(this,"Please Wait...")
+        val viewmodel =  ViewModelProvider(this)[HitViewModel::class.java]
         viewmodel.GetListOservable(SearchedText).observe(this, Observer<hitmodel> {
             if (it != null)
             {
                 MakeViewDesign(it)
             }
             else{
-                Toast.makeText(this, NoDataFetched, Toast.LENGTH_SHORT).show()
-
+                Toast.makeText(this, R.string.NoDataFetched, Toast.LENGTH_SHORT).show()
             }
             progressDialog.dialog.dismiss()
         })

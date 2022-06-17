@@ -8,21 +8,19 @@ import android.net.NetworkRequest
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
+import javax.inject.Inject
 
-class LiveDataInternetConnections(private val connectivityManager: ConnectivityManager): LiveData<Boolean>(){
-
+public class LiveDataInternetConnections  @Inject constructor (private val connectivityManager: ConnectivityManager): LiveData<Boolean>(){
         constructor(appContext: Application) : this(
             appContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         )
-
     private val networkCallback = @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     object : ConnectivityManager.NetworkCallback(){
-
         override fun onAvailable(network: Network) {
             super.onAvailable(network)
             postValue(true)
         }
-
+        @Inject
         @RequiresApi(Build.VERSION_CODES.M)
         override fun onCapabilitiesChanged(
             network: Network,
@@ -31,11 +29,13 @@ class LiveDataInternetConnections(private val connectivityManager: ConnectivityM
             val isValidated = networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
             postValue(isInternet && isValidated)
         }
+        @Inject
         override fun onLost(network: Network) {
             super.onLost(network)
             postValue(false)
         }
     }
+    @Inject
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onActive() {
         super.onActive()
@@ -44,7 +44,7 @@ class LiveDataInternetConnections(private val connectivityManager: ConnectivityM
             .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
             .build(), networkCallback)
     }
-
+    @Inject
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onInactive() {
         super.onInactive()

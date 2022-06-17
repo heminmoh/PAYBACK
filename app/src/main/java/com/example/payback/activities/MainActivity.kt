@@ -10,17 +10,18 @@ import android.widget.Toast
 import com.example.payback.R
 import com.example.payback.utilities.CheckInternetConnection
 import com.example.payback.utilities.LiveDataInternetConnections
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var CheckConnectionInternetConnection: CheckInternetConnection
-    private lateinit var LiveDataConnection : LiveDataInternetConnections
+    @Inject
+    lateinit var LiveDataConnection : LiveDataInternetConnections
     private lateinit var textviewConnect : TextView
     private lateinit var textviewdisconnect : TextView
     private lateinit var Button_Intent : Button
 
 
-    private val CheckNetwork : String ="Check Network"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             else
-                Toast.makeText(this@MainActivity,CheckNetwork, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity,R.string.CheckNetwork, Toast.LENGTH_SHORT).show()
 
         })
 

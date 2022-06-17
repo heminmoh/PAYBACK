@@ -1,46 +1,42 @@
 package com.example.payback.adapter
 
 import android.app.AlertDialog
-import android.app.Dialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
-import androidx.databinding.Bindable
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.payback.R
 import com.example.payback.activities.HitDetailActivity
 import com.example.payback.models.Hits
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.NonCancellable.cancel
 import com.example.payback.databinding.HitItemBinding
-import com.example.payback.utilities.LargeNewsViewHolder
+import com.example.payback.binding.HitViewHolder
+import javax.inject.Inject
 
 
-class HitsContentsAdapter ( private val HitsContentList: List<Hits>) :RecyclerView.Adapter<LargeNewsViewHolder>() {
+public class HitsContentsAdapter  @Inject constructor (private val HitsContentList: List<Hits>) :RecyclerView.Adapter<HitViewHolder>() {
 
     var context: Context? = null
     private lateinit var binding: HitItemBinding
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LargeNewsViewHolder {
+    @Inject
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):  HitViewHolder {
 
         binding = HitItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         context = parent.context
-        return LargeNewsViewHolder(binding)
+        return HitViewHolder(binding)
     }
-
+    @Inject
     override fun getItemCount(): Int {
 
         return HitsContentList.size
     }
 
-
-    override fun onBindViewHolder(holder: LargeNewsViewHolder, position: Int) {
+    @Inject
+    override fun onBindViewHolder(holder: HitViewHolder, position: Int) {
         holder.itemView.setOnClickListener(View.OnClickListener {
             val builder = AlertDialog.Builder(context)
             builder.setIcon(R.drawable.paybacklogo)
@@ -67,6 +63,7 @@ class HitsContentsAdapter ( private val HitsContentList: List<Hits>) :RecyclerVi
         })
         return holder.bind(HitsContentList[position])
     }
+    @Inject
     @BindingAdapter("imageUrl")
     fun loadImage(view: View,
                   imageUrl: String?) {

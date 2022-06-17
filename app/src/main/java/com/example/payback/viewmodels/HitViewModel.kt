@@ -16,6 +16,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.graphics.Color;
 import androidx.databinding.Bindable
+import javax.inject.Inject
 
 class HitViewModel : ViewModel() {
     var recyclerlivedata : MutableLiveData<hitmodel> = MutableLiveData()
@@ -30,7 +31,8 @@ class HitViewModel : ViewModel() {
     fun MakeApiCall()
     {
         viewModelScope.launch (Dispatchers.IO) {
-            val destinationService  = ServiceBuilder.buildService(APIInterface::class.java)
+
+            val destinationService  = ServiceBuilder.buildService( APIInterface::class.java)
             val requestCall =destinationService.getAffectedHitsList(id)
             requestCall.enqueue(object : Callback<hitmodel> {
                 @RequiresApi(Build.VERSION_CODES.O)

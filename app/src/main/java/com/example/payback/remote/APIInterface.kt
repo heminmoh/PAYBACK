@@ -1,11 +1,14 @@
 package com.example.payback.remote
 
 import com.example.payback.models.hitmodel
+import dagger.Component
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import javax.inject.Singleton
+
 
 public  interface APIInterface {
 

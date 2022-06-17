@@ -5,4 +5,9 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="SearchField">Search:</string>
+    <string name="CheckNetwork">Check Network</string>
+    <string name="ProgressBarDialog">Please Wait...</string>
+    <string name="NoDataFetched">No Data Fetched ...</string>
+
+
 </resources>
