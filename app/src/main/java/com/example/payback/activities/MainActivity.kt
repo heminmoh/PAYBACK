@@ -45,18 +45,11 @@ class MainActivity : AppCompatActivity() {
                 textviewdisconnect.visibility = View.VISIBLE
             }
         }
-        CheckConnectionInternetConnection = CheckInternetConnection()
 
         Button_Intent.setOnClickListener(View.OnClickListener {
 
-            if(CheckConnectionInternetConnection.checkForInternet(this@MainActivity))
-            {
                 intent = Intent(this, HitContentsActivity::class.java)
                 startActivity(intent)
-            }
-            else
-                Toast.makeText(this@MainActivity,R.string.CheckNetwork, Toast.LENGTH_SHORT).show()
-
         })
 
 

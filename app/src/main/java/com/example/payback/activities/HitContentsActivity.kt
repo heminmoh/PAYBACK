@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.ui.graphics.Color
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -23,6 +24,7 @@ import com.example.payback.utilities.PayBackProgressDialog
 import com.example.payback.viewmodels.HitViewModel
 import java.security.AccessController.getContext
 import com.example.payback.databinding.ActivityHitContentsBinding
+import com.example.payback.remote.ServiceBuilder
 
 
 class HitContentsActivity : AppCompatActivity() {
@@ -49,15 +51,12 @@ class HitContentsActivity : AppCompatActivity() {
         HitsRecycler.layoutManager = LinearLayoutManager(this)
         checkconnectionInternetConnection = CheckInternetConnection()
 
-        if(checkconnectionInternetConnection.checkForInternet(this@HitContentsActivity))
-        {
+        if(!checkconnectionInternetConnection.checkForInternet(this@HitContentsActivity)) {
+           Toast.makeText(this,"Check Network - Offline Mode",Toast.LENGTH_LONG).show()
+
+        }
 
             initViewModel(SearchEditText.text.toString())
-        }
-        else
-        {
-            Toast.makeText(this@HitContentsActivity,R.string.CheckNetwork, Toast.LENGTH_SHORT).show()
-        }
 
         ImageSearch.setOnClickListener(View.OnClickListener {
             var searchedDataText = SearchEditText.text.toString()
@@ -99,7 +98,7 @@ class HitContentsActivity : AppCompatActivity() {
         })
 
 
-        viewModel.makeApiCall()
+        viewModel.makeApiCall(this@HitContentsActivity)
 
 
 

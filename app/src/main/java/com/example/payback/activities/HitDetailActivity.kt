@@ -19,6 +19,7 @@ import com.example.payback.adapter.HitsContentsAdapter
 import com.example.payback.databinding.ActivityHitDetailBinding
 import com.example.payback.models.Hits
 import com.example.payback.models.hitmodel
+import com.example.payback.remote.ServiceBuilder
 import com.squareup.picasso.Picasso
 
 
@@ -49,6 +50,7 @@ class HitDetailActivity : AppCompatActivity() {
     }
     private fun init(detail : Hits)
     {
+
         val adapter = DetailHitItemAdapter(detail)
         DetailRecycler.adapter = adapter
     }

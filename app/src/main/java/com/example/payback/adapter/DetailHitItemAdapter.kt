@@ -38,30 +38,6 @@ public class DetailHitItemAdapter  @Inject constructor (private val hitDetail: H
     @Inject
     override fun onBindViewHolder(holder: DetailHitViewHolder, position: Int) {
         return holder.bind(hitDetail)
-//        holder.itemView.setOnClickListener(View.OnClickListener {
-//            val builder = AlertDialog.Builder(context)
-//            builder.setIcon(R.drawable.paybacklogo)
-//            builder.setTitle("Are You Sure?")
-//            builder.setMessage("You want to see more details...")
-//            builder.setPositiveButton(R.string.yes) { _, _ ->
-//                val intent = Intent(context, HitDetailActivity::class.java)
-//                    intent.putExtra("ImageBiggerVersion", HitsContentList.largeImageURL)
-//                    intent.putExtra("UserName", HitsContentList.user)
-//                    intent.putExtra("Tags", HitsContentList.tags)
-//                    intent.putExtra("NumberOfLikes", HitsContentList.likes.toString())
-//                    intent.putExtra("NumberOfDownloads", HitsContentList.downloads.toString())
-//                    intent.putExtra("NumberOfComments", HitsContentList.comments.toString())
-//                    context?.startActivity(intent)
-//            }
-//
-//            builder.setNegativeButton(R.string.no) { dialog, _ -> dialog.dismiss()   }
-//
-//
-//            builder.show()
-//
-//
-//
-//        })
 
     }
     @Inject

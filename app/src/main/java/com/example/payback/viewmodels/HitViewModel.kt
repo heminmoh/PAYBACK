@@ -1,5 +1,6 @@
 package com.example.payback.viewmodels
 
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
@@ -30,11 +31,13 @@ class HitViewModel : ViewModel() {
     }
 
 
-    fun makeApiCall()
+    fun makeApiCall(context: Context)
     {
         viewModelScope.launch (Dispatchers.IO) {
+            val servicebuilder: ServiceBuilder = ServiceBuilder(context)
+//            servicebuilder.init(context)
 
-            val destinationService  = ServiceBuilder.buildService( APIInterface::class.java)
+            val destinationService  = servicebuilder.buildService(APIInterface::class.java)
             val requestCall =destinationService.getAffectedHitsList(id)
             requestCall.enqueue(object : Callback<hitmodel> {
                 @RequiresApi(Build.VERSION_CODES.O)
