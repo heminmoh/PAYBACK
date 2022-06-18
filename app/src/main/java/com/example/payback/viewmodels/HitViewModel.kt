@@ -21,14 +21,14 @@ import javax.inject.Inject
 class HitViewModel : ViewModel() {
     var recyclerlivedata : MutableLiveData<hitmodel> = MutableLiveData()
     lateinit var id :String
-    fun GetListOservable (identify :  String) : LiveData<hitmodel>
+    fun getListObservable (identify :  String) : LiveData<hitmodel>
     {
         id = identify
         return recyclerlivedata
     }
 
 
-    fun MakeApiCall()
+    fun makeApiCall()
     {
         viewModelScope.launch (Dispatchers.IO) {
 

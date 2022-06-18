@@ -22,7 +22,7 @@ data class Hits(
     val likes: Int?,
     val comments: Int?,
     val user_id: Int?,
-    val user: String?,
+    var user: String?,
     val userImageURL: String?
 
 )

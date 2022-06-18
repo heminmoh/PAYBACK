@@ -12,7 +12,7 @@ import javax.inject.Singleton
 
 public  interface APIInterface {
 
-    @GET("api/?key=28064425-bf298584527deb9f5f55f7fe7&q=search_id&image_type=photo&pretty=true")
+    @GET("?key=28064425-bf298584527deb9f5f55f7fe7&q=search_id&image_type=photo&pretty=true")
     fun getAffectedHitsList(@Query("q") search_id : String ) : Call<hitmodel>
 
 }

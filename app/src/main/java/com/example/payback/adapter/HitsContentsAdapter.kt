@@ -47,9 +47,9 @@ public class HitsContentsAdapter  @Inject constructor (private val HitsContentLi
                     intent.putExtra("ImageBiggerVersion", HitsContentList[position].largeImageURL)
                     intent.putExtra("UserName", HitsContentList[position].user)
                     intent.putExtra("Tags", HitsContentList[position].tags)
-                    intent.putExtra("NumberOfLikes", HitsContentList[position].likes.toString())
-                    intent.putExtra("NumberOfDownloads", HitsContentList[position].downloads.toString())
-                    intent.putExtra("NumberOfComments", HitsContentList[position].comments.toString())
+                    intent.putExtra("NumberOfLikes", HitsContentList[position].likes).toString()
+                    intent.putExtra("NumberOfDownloads", HitsContentList[position].downloads).toString()
+                    intent.putExtra("NumberOfComments", HitsContentList[position].comments).toString()
                     context?.startActivity(intent)
             }
 

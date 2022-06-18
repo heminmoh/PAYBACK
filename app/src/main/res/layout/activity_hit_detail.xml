@@ -1,55 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:layout_gravity="center"
-    android:paddingLeft="5dp"
-    android:orientation="vertical"
-    tools:context=".activities.HitDetailActivity">
-    <com.example.payback.utilities.ZoomClass
-        android:id="@+id/ImageViewFullSize"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"/>
-    <TextView
-        android:id="@+id/UserNameDetailTextView"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+    xmlns:tools="http://schemas.android.com/tools">
 
-        android:gravity="center_vertical"
-        android:textColor="@color/black"
-        android:text=""/>
-    <TextView
-        android:id="@+id/TagsDetailTextView"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:textColor="@color/black"
-        android:text=""/>
-    <TextView
-        android:id="@+id/LikesDetailTextView"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:textColor="@color/black"
-        android:text=""/>
-    <TextView
-        android:id="@+id/DownloadsDetailTextView"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:textColor="@color/black"
-        android:text=""/>
-    <TextView
-        android:id="@+id/CommentsDetailTextView"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:textColor="@color/black"
-        android:text="">
+    <data>
 
-    </TextView>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/DetailRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp"
+            android:background="@color/white"
+            tools:listitem="@layout/detail_item">
 
-</LinearLayout>
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
+
+</layout>

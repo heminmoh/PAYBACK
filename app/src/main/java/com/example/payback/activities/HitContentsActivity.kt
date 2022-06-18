@@ -3,6 +3,7 @@ package com.example.payback.activities
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -63,33 +64,52 @@ class HitContentsActivity : AppCompatActivity() {
         }
 
         ImageSearch.setOnClickListener(View.OnClickListener {
-            var Searched_Data_Text = SearchEditText.text.toString()
-            initViewModel(Searched_Data_Text)
+            var searchedDataText = SearchEditText.text.toString()
+            initViewModel(searchedDataText)
         })
+
+        SearchEditText.setOnEditorActionListener { _, actionId, _ ->
+            if(actionId == EditorInfo.IME_ACTION_SEARCH){
+                var searchedDataText = SearchEditText.text.toString()
+                initViewModel(searchedDataText)
+                true
+            } else {
+                false
+            }
+        }
 
     }
 
 
 
-    fun initViewModel(SearchedText : String)
+    private fun initViewModel(SearchedText : String)
     {
         progressDialog = PayBackProgressDialog()
         progressDialog.show(this,"Please Wait...")
-        val viewmodel =  ViewModelProvider(this)[HitViewModel::class.java]
-        viewmodel.GetListOservable(SearchedText).observe(this, Observer<hitmodel> {
+
+
+
+        val viewModel =  ViewModelProvider(this)[HitViewModel::class.java]
+        viewModel.getListObservable(SearchedText).observe(this, Observer<hitmodel> {
             if (it != null)
             {
-                MakeViewDesign(it)
+                makeViewDesign(it)
             }
             else{
                 Toast.makeText(this, R.string.NoDataFetched, Toast.LENGTH_SHORT).show()
             }
             progressDialog.dialog.dismiss()
         })
-        viewmodel.MakeApiCall()
+
+
+
+        viewModel.makeApiCall()
+
+
+
     }
 
-    private fun MakeViewDesign(hitsList : hitmodel?)
+    private fun makeViewDesign(hitsList : hitmodel?)
     {
         val adapter = hitsList?.hits?.let { HitsContentsAdapter(it) }
         HitsRecycler.adapter = adapter

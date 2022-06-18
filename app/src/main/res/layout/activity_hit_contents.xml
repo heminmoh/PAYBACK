@@ -42,6 +42,7 @@
             android:paddingRight="10dp"
             android:maxLines="1"
             android:singleLine="true"
+            android:imeOptions="actionSearch"
             android:textStyle="bold"
             android:textCursorDrawable="@color/black"
             android:layout_marginTop="10dp"
