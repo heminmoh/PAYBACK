@@ -15,7 +15,9 @@ import kotlinx.coroutines.launch
 import retrofit2.Callback
 import retrofit2.Response
 import android.graphics.Color;
+import android.widget.Toast
 import androidx.databinding.Bindable
+import com.example.payback.R
 import javax.inject.Inject
 
 class HitViewModel : ViewModel() {
@@ -37,7 +39,6 @@ class HitViewModel : ViewModel() {
             requestCall.enqueue(object : Callback<hitmodel> {
                 @RequiresApi(Build.VERSION_CODES.O)
                 override fun onResponse(call: retrofit2.Call<hitmodel>, response: Response<hitmodel>) {
-                    Log.d("Response", "onResponse: ${response.body()}")
                     if (response.isSuccessful){
                         recyclerlivedata.value = response.body()
                     }else{
@@ -45,7 +46,6 @@ class HitViewModel : ViewModel() {
                     }
                 }
                 override fun onFailure(call: retrofit2.Call<hitmodel>, t: Throwable) {
-                    Log.d("Response", "onResponse: $t")
                 }
             })
         }

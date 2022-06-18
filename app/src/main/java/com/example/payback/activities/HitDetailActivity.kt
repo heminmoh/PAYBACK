@@ -6,6 +6,7 @@ import android.icu.number.IntegerWidth
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
@@ -32,32 +33,18 @@ class HitDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHitDetailBinding
 
     lateinit var DetailRecycler : RecyclerView
-    lateinit var ImageViewFullSize : ImageView
-    lateinit var UsernameTextView : TextView
-    lateinit var TagsTextView : TextView
-    lateinit var LikesTextView : TextView
-    lateinit var DownloadsTextView : TextView
-    lateinit var CommentsTextView : TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hit_detail)
 
         DetailRecycler = binding.DetailRecycler
         DetailRecycler.layoutManager = LinearLayoutManager(this)
-//        ImageViewFullSize = (findViewById(R.id.ImageViewFullSize))
 
-
-        val imageBiggerVersion = intent.getStringExtra(EXTRA_IMAGE_URL).toString()
-        val userName           = intent.getStringExtra(EXTRA_UserName).toString()
-        val tags               = intent.getStringExtra(EXTRA_Tags).toString()
-        val numberOfLikes      = intent.getIntExtra(EXTRA_NumberOfLikes,0)
-        val numberOfDownloads  = intent.getIntExtra(EXTRA_NumberOfDownloads,0)
-        val numberOfComments   = intent.getIntExtra(EXTRA_NumberOfComments,0)
-        var hit : Hits = Hits("","","",tags,"",0,0,""
-        ,"","",imageBiggerVersion,0,0,0,0,numberOfDownloads
-            ,0,numberOfLikes,numberOfComments,0,userName,"")
-        init(hit)
-//        Picasso.get().load(imageBiggerVersion).into(ImageViewFullSize)
+        val hitObject : Hits? = intent.getParcelableExtra("object")
+        if (hitObject != null) {
+            init(hitObject)
+        }
 
     }
     private fun init(detail : Hits)

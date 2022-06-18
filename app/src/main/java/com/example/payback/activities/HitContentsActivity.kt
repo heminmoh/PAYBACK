@@ -46,11 +46,7 @@ class HitContentsActivity : AppCompatActivity() {
         ImageSearch = findViewById (R.id.imgSearch)
         SearchEditText = findViewById (R.id.SearchEditText)
         SearchEditText.setText("fruits")
-
         HitsRecycler.layoutManager = LinearLayoutManager(this)
-//        HitsRecycler.layoutManager = GridLayoutManager(this,2)
-
-
         checkconnectionInternetConnection = CheckInternetConnection()
 
         if(checkconnectionInternetConnection.checkForInternet(this@HitContentsActivity))
@@ -99,8 +95,8 @@ class HitContentsActivity : AppCompatActivity() {
                 Toast.makeText(this, R.string.NoDataFetched, Toast.LENGTH_SHORT).show()
             }
             progressDialog.dialog.dismiss()
-        })
 
+        })
 
 
         viewModel.makeApiCall()
