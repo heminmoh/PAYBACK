@@ -88,10 +88,6 @@ class HitContentsActivity : AppCompatActivity() {
         }
 
 
-//        viewModel.makeApiCall(this@HitContentsActivity)
-
-
-
     }
 
     private fun makeViewDesign(hitsList : HitModel?)

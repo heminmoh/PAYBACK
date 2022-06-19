@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.payback.models.HitModel
 import com.example.payback.models.Hits
+import com.example.payback.models.IHitRepository
 import com.example.payback.remote.APIInterface
 import com.example.payback.remote.ServiceBuilder
 import com.example.payback.repositories.HitRepositoryImp
@@ -20,7 +21,7 @@ import retrofit2.Response
 
 class HitViewModel() : ViewModel() {
     var recyclerLiveData : MutableLiveData<HitModel> = MutableLiveData()
-    private var  hitRepository : HitRepositoryImp = HitRepositoryImp()
+    private var  hitRepository = HitRepositoryImp()
     lateinit var id :String
 
     fun getListObservable (context: Context,identify :  String) : LiveData<HitModel>

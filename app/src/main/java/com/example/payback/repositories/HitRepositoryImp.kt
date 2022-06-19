@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.payback.models.HitModel
+import com.example.payback.models.IHitRepository
 import com.example.payback.remote.APIInterface
 import com.example.payback.remote.ServiceBuilder
 import kotlinx.coroutines.Dispatchers
@@ -16,9 +17,9 @@ import kotlinx.coroutines.launch
 import retrofit2.Callback
 import retrofit2.Response
 
-class HitRepositoryImp {
-    var recyclerLiveData : MutableLiveData<HitModel> = MutableLiveData()
-    fun makeApiCall(context: Context, id : String  ) : MutableLiveData<HitModel>
+class HitRepositoryImp : IHitRepository {
+    override var recyclerLiveData : MutableLiveData<HitModel> = MutableLiveData()
+    override fun makeApiCall(context: Context, id : String  ) : MutableLiveData<HitModel>
     {
         GlobalScope.launch (Dispatchers.IO) {
             val serviceBuilder = ServiceBuilder(context)
