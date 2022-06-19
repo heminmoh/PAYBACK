@@ -1,7 +1,10 @@
 package com.example.payback.activities
 
+import android.content.Context
 import android.os.Bundle
+import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
@@ -34,7 +37,6 @@ class HitContentsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hit_contents)
-
         hitsRecycler = binding.HitsRecycler
 
         imageSearch = findViewById (R.id.imgSearch)
@@ -45,16 +47,14 @@ class HitContentsActivity : AppCompatActivity() {
 
         if(!checkConnectionInternetConnection.checkForInternet(this@HitContentsActivity)) {
            Toast.makeText(this,"Check Network - Offline Mode",Toast.LENGTH_LONG).show()
-
         }
-
-            initViewModel(searchEditText.text.toString())
+        hideSoftKeyboard(searchEditText)
+        initViewModel(searchEditText.text.toString())
 
         imageSearch.setOnClickListener {
             val searchedDataText = searchEditText.text.toString()
             initViewModel(searchedDataText)
         }
-
         searchEditText.setOnEditorActionListener { _, actionId, _ ->
             if(actionId == EditorInfo.IME_ACTION_SEARCH){
                 val searchedDataText = searchEditText.text.toString()
@@ -73,6 +73,8 @@ class HitContentsActivity : AppCompatActivity() {
     {
         progressDialog = PayBackProgressDialog()
         progressDialog.show(this,"Please Wait...")
+
+
 
 
 
@@ -95,5 +97,10 @@ class HitContentsActivity : AppCompatActivity() {
         val adapter = hitsList?.hits?.let { HitsContentsAdapter(it) }
         hitsRecycler.adapter = adapter
 
+    }
+
+    private fun hideSoftKeyboard(view: View) {
+        val manager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        manager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

@@ -1,4 +1,11 @@
 package com.example.payback.utilities
+/**
+ * this class make a LiveData Check for Checking Network Access on Device
+ *
+ *  Class return a LiveData Boolean which show you the network staus
+ *
+ * 2022-06-17 12:00
+ */
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager

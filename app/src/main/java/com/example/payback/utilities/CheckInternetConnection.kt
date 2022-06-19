@@ -1,12 +1,19 @@
 package com.example.payback.utilities
 
+/**
+ * function of checkForInternet in this class check Internet connection
+ * context is the enter param  and return a Boolean value which shows Internet Status
+ *  2022-06-17  09:37
+ */
+
+
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 
 
- class CheckInternetConnection {
-     fun checkForInternet(context: Context): Boolean {
+class CheckInternetConnection  {
+      fun checkForInternet(context: Context): Boolean {
 
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
          val network = connectivityManager.activeNetwork ?: return false
