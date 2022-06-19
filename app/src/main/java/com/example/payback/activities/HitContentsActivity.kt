@@ -20,13 +20,16 @@ import com.example.payback.utilities.PayBackProgressDialog
 import com.example.payback.viewmodels.HitViewModel
 import com.example.payback.databinding.ActivityHitContentsBinding
 import com.example.payback.models.HitModel
+import com.example.payback.models.ICheckInternetConnection
 
 
 class HitContentsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHitContentsBinding
 
-    private lateinit var checkConnectionInternetConnection: CheckInternetConnection
+
+   private var checkConnectionInternetConnection: Boolean = false
+   private var connectionInternetConnection= CheckInternetConnection()
 
     private lateinit var hitsRecycler : RecyclerView
     private lateinit var searchEditText : EditText
@@ -43,9 +46,9 @@ class HitContentsActivity : AppCompatActivity() {
         searchEditText = findViewById (R.id.SearchEditText)
         searchEditText.setText(R.string.fruits)
         hitsRecycler.layoutManager = LinearLayoutManager(this)
-        checkConnectionInternetConnection = CheckInternetConnection()
+        checkConnectionInternetConnection = connectionInternetConnection.checkForInternet(this@HitContentsActivity)
 
-        if(!checkConnectionInternetConnection.checkForInternet(this@HitContentsActivity)) {
+        if(!checkConnectionInternetConnection) {
            Toast.makeText(this,"Check Network - Offline Mode",Toast.LENGTH_LONG).show()
         }
         hideSoftKeyboard(searchEditText)
@@ -73,10 +76,6 @@ class HitContentsActivity : AppCompatActivity() {
     {
         progressDialog = PayBackProgressDialog()
         progressDialog.show(this,"Please Wait...")
-
-
-
-
 
         val viewModel =  ViewModelProvider(this)[HitViewModel::class.java]
         viewModel.getListObservable(this,SearchedText).observe(this) {

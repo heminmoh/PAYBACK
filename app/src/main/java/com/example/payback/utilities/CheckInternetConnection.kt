@@ -10,10 +10,11 @@ package com.example.payback.utilities
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import com.example.payback.models.ICheckInternetConnection
 
 
-class CheckInternetConnection  {
-      fun checkForInternet(context: Context): Boolean {
+class CheckInternetConnection : ICheckInternetConnection {
+      override fun checkForInternet(context: Context): Boolean {
 
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
          val network = connectivityManager.activeNetwork ?: return false
