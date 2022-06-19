@@ -2,9 +2,8 @@ package com.example.payback.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-import kotlinx.serialization.Serializable
 
-data class hitmodel(val total:Int?,val totalHits: Int?,val hits: List<Hits>?)
+data class HitModel(val total:Int?,val totalHits: Int?,val hits: List<Hits>?)
 @Parcelize
 data class Hits (
     val id: String?,

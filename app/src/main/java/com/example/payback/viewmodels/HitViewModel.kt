@@ -8,47 +8,41 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.payback.models.hitmodel
+import com.example.payback.models.HitModel
 import com.example.payback.remote.APIInterface
 import com.example.payback.remote.ServiceBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Callback
 import retrofit2.Response
-import android.graphics.Color;
-import android.widget.Toast
-import androidx.databinding.Bindable
-import com.example.payback.R
-import javax.inject.Inject
 
 class HitViewModel : ViewModel() {
-    var recyclerlivedata : MutableLiveData<hitmodel> = MutableLiveData()
+    var recyclerLiveData : MutableLiveData<HitModel> = MutableLiveData()
     lateinit var id :String
-    fun getListObservable (identify :  String) : LiveData<hitmodel>
+    fun getListObservable (identify :  String) : LiveData<HitModel>
     {
         id = identify
-        return recyclerlivedata
+        return recyclerLiveData
     }
 
 
     fun makeApiCall(context: Context)
     {
         viewModelScope.launch (Dispatchers.IO) {
-            val servicebuilder: ServiceBuilder = ServiceBuilder(context)
-//            servicebuilder.init(context)
+            val serviceBuilder = ServiceBuilder(context)
 
-            val destinationService  = servicebuilder.buildService(APIInterface::class.java)
+            val destinationService  = serviceBuilder.buildService(APIInterface::class.java)
             val requestCall =destinationService.getAffectedHitsList(id)
-            requestCall.enqueue(object : Callback<hitmodel> {
+            requestCall.enqueue(object : Callback<HitModel> {
                 @RequiresApi(Build.VERSION_CODES.O)
-                override fun onResponse(call: retrofit2.Call<hitmodel>, response: Response<hitmodel>) {
+                override fun onResponse(call: retrofit2.Call<HitModel>, response: Response<HitModel>) {
                     if (response.isSuccessful){
-                        recyclerlivedata.value = response.body()
+                        recyclerLiveData.value = response.body()
                     }else{
                         Log.d("Response", "onResponse: ${response.body()}")
                     }
                 }
-                override fun onFailure(call: retrofit2.Call<hitmodel>, t: Throwable) {
+                override fun onFailure(call: retrofit2.Call<HitModel>, t: Throwable) {
                 }
             })
         }

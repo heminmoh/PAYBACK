@@ -6,20 +6,17 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import com.example.payback.R
-import com.example.payback.utilities.CheckInternetConnection
 import com.example.payback.utilities.LiveDataInternetConnections
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var CheckConnectionInternetConnection: CheckInternetConnection
     @Inject
-    lateinit var LiveDataConnection : LiveDataInternetConnections
+    lateinit var liveDataConnection : LiveDataInternetConnections
     private lateinit var textviewConnect : TextView
-    private lateinit var textviewdisconnect : TextView
-    private lateinit var Button_Intent : Button
+    private lateinit var textViewDisconnect : TextView
+    private lateinit var buttonIntent : Button
 
 
 
@@ -27,30 +24,30 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Button_Intent = findViewById(R.id.intentcall)
+        buttonIntent = findViewById(R.id.intentcall)
         textviewConnect = findViewById(R.id.connected)
-        textviewdisconnect = findViewById(R.id.not_connected)
-        LiveDataConnection = LiveDataInternetConnections(application)
+        textViewDisconnect = findViewById(R.id.not_connected)
+        liveDataConnection = LiveDataInternetConnections(application)
         textviewConnect.visibility = View.GONE
-        textviewdisconnect.visibility = View.VISIBLE
+        textViewDisconnect.visibility = View.VISIBLE
 
 
 
-        LiveDataConnection.observe(this) { isConnected ->
+        liveDataConnection.observe(this) { isConnected ->
             if (isConnected) {
                 textviewConnect.visibility = View.GONE
-                textviewdisconnect.visibility = View.GONE
+                textViewDisconnect.visibility = View.GONE
             }else {
                 textviewConnect.visibility = View.GONE
-                textviewdisconnect.visibility = View.VISIBLE
+                textViewDisconnect.visibility = View.VISIBLE
             }
         }
 
-        Button_Intent.setOnClickListener(View.OnClickListener {
+        buttonIntent.setOnClickListener {
 
-                intent = Intent(this, HitContentsActivity::class.java)
-                startActivity(intent)
-        })
+            intent = Intent(this, HitContentsActivity::class.java)
+            startActivity(intent)
+        }
 
 
     }

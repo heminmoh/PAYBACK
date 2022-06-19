@@ -10,7 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import javax.inject.Inject
 
-public class LiveDataInternetConnections  @Inject constructor (private val connectivityManager: ConnectivityManager): LiveData<Boolean>(){
+ class LiveDataInternetConnections  @Inject constructor (private val connectivityManager: ConnectivityManager): LiveData<Boolean>(){
         constructor(appContext: Application) : this(
             appContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         )
@@ -21,7 +21,6 @@ public class LiveDataInternetConnections  @Inject constructor (private val conne
             postValue(true)
         }
         @Inject
-        @RequiresApi(Build.VERSION_CODES.M)
         override fun onCapabilitiesChanged(
             network: Network,
             networkCapabilities: NetworkCapabilities) {
@@ -36,7 +35,6 @@ public class LiveDataInternetConnections  @Inject constructor (private val conne
         }
     }
     @Inject
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onActive() {
         super.onActive()
         val builder = NetworkRequest.Builder()
@@ -45,7 +43,6 @@ public class LiveDataInternetConnections  @Inject constructor (private val conne
             .build(), networkCallback)
     }
     @Inject
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onInactive() {
         super.onInactive()
         connectivityManager.unregisterNetworkCallback(networkCallback)

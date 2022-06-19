@@ -1,8 +1,6 @@
 package com.example.payback.adapter
 
-import android.app.AlertDialog
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +8,6 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.payback.R
-import com.example.payback.activities.HitDetailActivity
 import com.example.payback.binding.DetailHitViewHolder
 import com.example.payback.models.Hits
 import com.squareup.picasso.Picasso
@@ -18,7 +15,7 @@ import com.example.payback.databinding.DetailItemBinding
 import javax.inject.Inject
 
 
-public class DetailHitItemAdapter  @Inject constructor (private val hitDetail: Hits) :RecyclerView.Adapter<DetailHitViewHolder>() {
+ class DetailHitItemAdapter  @Inject constructor (private val hitDetail: Hits) :RecyclerView.Adapter<DetailHitViewHolder>() {
 
     var context: Context? = null
     private lateinit var binding: DetailItemBinding

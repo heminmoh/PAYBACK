@@ -3,7 +3,6 @@ package com.example.payback.adapter
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,11 +15,10 @@ import com.example.payback.models.Hits
 import com.squareup.picasso.Picasso
 import com.example.payback.databinding.HitItemBinding
 import com.example.payback.binding.HitViewHolder
-import kotlinx.serialization.Serializable
 import javax.inject.Inject
 
 
-public class HitsContentsAdapter  @Inject constructor (private val HitsContentList: List<Hits>) :RecyclerView.Adapter<HitViewHolder>() {
+ class HitsContentsAdapter  @Inject constructor (private val HitsContentList: List<Hits>) :RecyclerView.Adapter<HitViewHolder>() {
 
     var context: Context? = null
     private lateinit var binding: HitItemBinding
@@ -39,25 +37,24 @@ public class HitsContentsAdapter  @Inject constructor (private val HitsContentLi
 
     @Inject
     override fun onBindViewHolder(holder: HitViewHolder, position: Int) {
-        holder.itemView.setOnClickListener(View.OnClickListener {
+        holder.itemView.setOnClickListener {
             val builder = AlertDialog.Builder(context)
             builder.setIcon(R.drawable.paybacklogo)
             builder.setTitle("Are You Sure?")
             builder.setMessage("You want to see more details...")
             builder.setPositiveButton(R.string.yes) { _, _ ->
                 val intent = Intent(context, HitDetailActivity::class.java)
-                    intent.putExtra("object" , HitsContentList[position] )
-                    context?.startActivity(intent)
+                intent.putExtra("object", HitsContentList[position])
+                context?.startActivity(intent)
             }
 
-            builder.setNegativeButton(R.string.no) { dialog, _ -> dialog.dismiss()   }
+            builder.setNegativeButton(R.string.no) { dialog, _ -> dialog.dismiss() }
 
 
             builder.show()
 
 
-
-        })
+        }
         return holder.bind(HitsContentList[position])
     }
     @Inject

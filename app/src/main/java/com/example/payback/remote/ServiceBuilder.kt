@@ -2,10 +2,7 @@ package com.example.payback.remote
 
 
 
-import android.app.Application
 import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import com.example.payback.utilities.CheckInternetConnection
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -14,17 +11,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Singleton
-public class ServiceBuilder (context: Context) {
+ class ServiceBuilder (context: Context) {
 
 
 
     private val cacheSize = (10 * 1024 * 1024).toLong()
     private val myCache = Cache(context.cacheDir, cacheSize)
     private val checkInternetConnection= CheckInternetConnection()
-    private  val URL ="https://pixabay.com/api/"
+    private  val url ="https://pixabay.com/api/"
     private val okHttp =OkHttpClient.Builder().cache(myCache).addInterceptor{
         chain ->  var request = chain.request()
-                 request = if (checkInternetConnection.checkForInternet(context)!!)
+                 request = if (checkInternetConnection.checkForInternet(context))
             request.newBuilder().header("Cache-Control", "public, max-age=" + 4).build()
         else
             request.newBuilder().header(
@@ -34,13 +31,13 @@ public class ServiceBuilder (context: Context) {
         chain.proceed(request)
     }
 
-    private val builder =Retrofit.Builder().baseUrl(URL)
+    private val builder =Retrofit.Builder().baseUrl(url)
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttp.build())
 
     private val retrofit = builder.build()
 
-   public fun <T> buildService (serviceType :Class<T>):T{
+    fun <T> buildService (serviceType :Class<T>):T{
         return retrofit.create(serviceType)
     }
 
