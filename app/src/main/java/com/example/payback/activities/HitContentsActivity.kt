@@ -85,10 +85,7 @@ class HitContentsActivity : AppCompatActivity() {
                 Toast.makeText(this, R.string.NoDataFetched, Toast.LENGTH_SHORT).show()
             }
             progressDialog.dialog.dismiss()
-
         }
-
-
     }
 
     private fun makeViewDesign(hitsList : HitModel?)
@@ -98,7 +95,8 @@ class HitContentsActivity : AppCompatActivity() {
 
     }
 
-    private fun hideSoftKeyboard(view: View) {
+    private fun hideSoftKeyboard(view: View)
+    {
         val manager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         manager.hideSoftInputFromWindow(view.windowToken, 0)
     }

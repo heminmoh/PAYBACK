@@ -23,7 +23,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class HitViewModel() : ViewModel() {
-    private var recyclerLiveData : MutableLiveData<HitModel> = MutableLiveData()
+    private var recyclerLiveData : MutableLiveData< HitModel> = MutableLiveData()
     private var  hitRepository = HitRepositoryImp()
     lateinit var id :String
 
