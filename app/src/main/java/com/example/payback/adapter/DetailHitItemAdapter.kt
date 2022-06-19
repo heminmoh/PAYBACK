@@ -45,7 +45,7 @@ public class DetailHitItemAdapter  @Inject constructor (private val hitDetail: H
     fun loadImage(view: View,
                   imageUrl: String?) {
         val image: ImageView = view as ImageView
-        Picasso.get().load(imageUrl).into(image)
+        Picasso.get().load(imageUrl).placeholder(R.drawable.loading).into(image)
     }
 
 
