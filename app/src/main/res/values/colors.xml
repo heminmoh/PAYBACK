@@ -15,6 +15,9 @@
     <color name="green_400">#9FC747</color>
     <color name="green_500">#86B817</color>
     <color name="green_700">#508200</color>
+    <color name="red_400">#FD3131</color>
+    <color name="red_600">#C60505</color>
+    <color name="red_700">#770303</color>
     <color name="light_blue_100">#8FDAFF</color>
     <color name="light_blue_600">#FF039BE5</color>
     <color name="light_blue_900">#FF01579B</color>

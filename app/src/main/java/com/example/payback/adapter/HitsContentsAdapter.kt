@@ -57,13 +57,7 @@ import javax.inject.Inject
         }
         return holder.bind(HitsContentList[position])
     }
-    @Inject
-    @BindingAdapter("imageUrl")
-    fun loadImage(view: View,
-                  imageUrl: String?) {
-        val image: ImageView = view as ImageView
-        Picasso.get().load(imageUrl).into(image)
-    }
+
 
 
 }

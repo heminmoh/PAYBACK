@@ -77,7 +77,7 @@ class HitContentsActivity : AppCompatActivity() {
 
 
         val viewModel =  ViewModelProvider(this)[HitViewModel::class.java]
-        viewModel.getListObservable(SearchedText).observe(this) {
+        viewModel.getListObservable(this,SearchedText).observe(this) {
             if (it != null) {
                 makeViewDesign(it)
             } else {
@@ -88,7 +88,7 @@ class HitContentsActivity : AppCompatActivity() {
         }
 
 
-        viewModel.makeApiCall(this@HitContentsActivity)
+//        viewModel.makeApiCall(this@HitContentsActivity)
 
 
 
