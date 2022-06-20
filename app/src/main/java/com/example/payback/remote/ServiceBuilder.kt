@@ -1,5 +1,3 @@
-package com.example.payback.remote
-
 
 /**
  * This class build a retrofit Api interface
@@ -7,6 +5,10 @@ package com.example.payback.remote
  *  an HTTP annotation that provides the request method and relative URL
  *  2022-06-17  16:37
  */
+
+
+
+package com.example.payback.remote
 
 
 

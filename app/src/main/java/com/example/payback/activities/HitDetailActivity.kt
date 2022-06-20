@@ -1,3 +1,12 @@
+/**
+ * the detail activity for show data in detail  by using DetailHitItemAdapter
+ * has been bound with ActivityHitDetailBinding
+ *  If access denied to data ?
+ *  it use the cache data in Okhttp Process
+ *  init function take an Hits object  and call make view by recycleView
+ * 2022-06-19 09:00
+ */
+
 package com.example.payback.activities
 
 import androidx.appcompat.app.AppCompatActivity

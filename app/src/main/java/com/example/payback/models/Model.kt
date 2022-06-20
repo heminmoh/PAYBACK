@@ -1,3 +1,9 @@
+/**
+ * The models : Based On Api model attribute
+ * Parcelable used for serialized properties to be declared
+ * ability to send in intent by object
+ *  2022-06-17  22:50
+ */
 package com.example.payback.models
 
 import android.os.Parcelable

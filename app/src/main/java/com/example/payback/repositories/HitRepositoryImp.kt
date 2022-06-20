@@ -1,3 +1,8 @@
+/**
+ * HitRepositoryImp is an class call Api by  Coroutine method
+ * take an id which is the search key and return a MutableLiveData<HitModel>
+ *  2022-06-18  15:37
+ */
 package com.example.payback.repositories
 
 import android.content.Context

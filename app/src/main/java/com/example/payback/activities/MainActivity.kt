@@ -1,3 +1,11 @@
+
+/**
+ * the Main activity for show data first page
+ * By liveDataConnection check the network and show proportional result
+ *
+ * 2022-06-16 - 1630
+ */
+
 package com.example.payback.activities
 
 import android.content.Intent

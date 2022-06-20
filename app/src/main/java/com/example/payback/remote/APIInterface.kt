@@ -1,11 +1,11 @@
-package com.example.payback.remote
-
 /**
  * an interface to provide HTTP request
- *
  *  HTTP annotation  provides the request method and relative URL
  * 2022-06-17 12:00
  */
+
+package com.example.payback.remote
+
 
 import com.example.payback.models.HitModel
 import retrofit2.Call

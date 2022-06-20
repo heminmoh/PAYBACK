@@ -1,3 +1,9 @@
+/**
+ * getListObservable is a function in HitViewModel that take context and searched data
+ * and return  LiveData<HitModel> object
+ * 2022-06-18 18:00
+ */
+
 package com.example.payback.viewmodels
 
 import android.content.Context

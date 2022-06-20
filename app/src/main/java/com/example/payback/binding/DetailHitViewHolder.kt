@@ -1,3 +1,9 @@
+/**
+ * DetailHitViewHolder
+ * binding data with detailItem.xml
+ * DetailHitViewHolder take an object of DetailItemBinding( detailItem.xml ) and by bind function, data bound.
+ * 2022-06-18 23:55
+ */
 package com.example.payback.binding
 
 import androidx.recyclerview.widget.RecyclerView

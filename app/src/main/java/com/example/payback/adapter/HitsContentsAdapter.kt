@@ -1,18 +1,23 @@
+/**
+ * HitsContentsAdapter
+ * display the Hits items by this Adapter
+ * Data bound to HitItemBinding by HitViewHolder
+ * in section onBindViewHolder when user click on item an object send to another activity by intent
+ * 2022-06-18 21:35
+ */
+
+
 package com.example.payback.adapter
 
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.payback.R
 import com.example.payback.activities.HitDetailActivity
 import com.example.payback.models.Hits
-import com.squareup.picasso.Picasso
 import com.example.payback.databinding.HitItemBinding
 import com.example.payback.binding.HitViewHolder
 import javax.inject.Inject

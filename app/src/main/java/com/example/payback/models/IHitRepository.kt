@@ -1,3 +1,9 @@
+/**
+ * IHitRepository is an interface for HitRepositoryImp class
+ * class call Api by coroutine method
+ *  2022-06-18  12:37
+ */
+
 package com.example.payback.models
 
 import android.content.Context

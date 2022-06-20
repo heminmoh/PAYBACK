@@ -11,4 +11,5 @@ fun loadImage(view: View,
               imageUrl: String?) {
     val image: ImageView = view as ImageView
     Picasso.get().load(imageUrl).placeholder(R.drawable.loading).into(image)
+
 }

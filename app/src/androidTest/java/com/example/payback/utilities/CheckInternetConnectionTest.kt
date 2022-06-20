@@ -3,10 +3,8 @@ package com.example.payback.utilities
 import android.content.Context
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
-import androidx.test.runner.AndroidJUnit4
 import org.junit.Assert.*
-import org.junit.Rule
-import org.junit.Test
+
 import org.junit.runner.RunWith
 
 
@@ -15,7 +13,7 @@ internal class CheckInternetConnectionTest {
 
     @JvmField
     var connectionInternetConnection= CheckInternetConnection()
-    lateinit var instrumentationContext: Context
+    private lateinit var instrumentationContext: Context
     @org.junit.Test
     fun checkForInternet() {
         instrumentationContext = InstrumentationRegistry.getInstrumentation().targetContext

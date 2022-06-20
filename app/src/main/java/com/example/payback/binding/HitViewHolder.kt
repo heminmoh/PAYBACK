@@ -1,3 +1,10 @@
+/**
+ * HitViewHolder
+ * binding data with hitItem.xml
+ * HitViewHolder take an object as HitItemBinding(hitItem) and by bind function, data bound.
+ * 2022-06-19 02:55
+ */
+
 package com.example.payback.binding
 
 import androidx.recyclerview.widget.RecyclerView

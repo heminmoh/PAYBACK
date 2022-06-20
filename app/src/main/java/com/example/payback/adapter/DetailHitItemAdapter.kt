@@ -1,3 +1,10 @@
+/**
+ * DetailHitItemAdapter
+ * display the Hit item by this Adapter
+ * Data bound to DetailItemBinding by DetailHitViewHolder
+ * 2022-06-18 23:20
+ */
+
 package com.example.payback.adapter
 
 import android.content.Context

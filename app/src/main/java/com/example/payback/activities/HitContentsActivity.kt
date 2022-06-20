@@ -1,3 +1,13 @@
+
+/**
+ * the major activity for show data by using HitsContentsAdapter
+ * has been bound with ActivityHitContentsBinding
+ *  If access denied to data ?
+ *  it use the cache data in Okhttp Process
+ *  initViewModel function take a string and call api and make view by recycleView
+ *  hideSoftKeyboard dismiss keyboard when activity
+ * 2022-06-18 13:00
+ */
 package com.example.payback.activities
 
 import android.content.Context
@@ -20,7 +30,6 @@ import com.example.payback.utilities.PayBackProgressDialog
 import com.example.payback.viewmodels.HitViewModel
 import com.example.payback.databinding.ActivityHitContentsBinding
 import com.example.payback.models.HitModel
-import com.example.payback.models.ICheckInternetConnection
 
 
 class HitContentsActivity : AppCompatActivity() {
