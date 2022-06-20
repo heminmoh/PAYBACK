@@ -1,6 +1,6 @@
 /**
  * Custom Progress Dialog
- * specify PayBack Logo
+ * specify with PayBack Logo
  * 2022-06-18 11:00
  */
 package com.example.payback.utilities

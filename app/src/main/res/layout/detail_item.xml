@@ -17,11 +17,7 @@
         android:paddingLeft="5dp"
         android:orientation="vertical"
         tools:context=".activities.HitDetailActivity">
-<!--        <com.example.payback.utilities.ZoomClass-->
-<!--            android:id="@+id/ImageViewFullSize"-->
-<!--            android:layout_width="match_parent"-->
 
-<!--            android:layout_height="500dp"/>-->
         <ImageView
             android:id="@+id/DetailItemImage"
             android:layout_width="match_parent"

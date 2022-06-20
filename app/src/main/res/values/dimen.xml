@@ -2,7 +2,7 @@
 <resources>
     <dimen name="headersections">18dp</dimen>
     <dimen name="username">16dp</dimen>
-    <dimen name="searchtextview">22dp</dimen>
+    <dimen name="searchtextview">19dp</dimen>
     <dimen name="tag">16dp</dimen>
     <dimen name="connection">16dp</dimen>
     <dimen name="title">20dp</dimen>

@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Callback
 import retrofit2.Response
 
-class HitRepositoryImp : IHitRepository {
+class HitRepositoryImp :  IHitRepository {
     override var recyclerLiveData : MutableLiveData<HitModel> = MutableLiveData()
     override fun makeApiCall(context: Context, id : String  ) : MutableLiveData<HitModel>
     {

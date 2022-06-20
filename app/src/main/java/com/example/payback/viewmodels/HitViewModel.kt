@@ -30,7 +30,6 @@ import retrofit2.Response
 
 class HitViewModel() : ViewModel() {
     private var recyclerLiveData : MutableLiveData< HitModel> = MutableLiveData()
-    private var  hitRepository = HitRepositoryImp()
     lateinit var id :String
 
 
@@ -38,7 +37,7 @@ class HitViewModel() : ViewModel() {
     fun getListObservable (context: Context, identify: String) : LiveData<HitModel>
     {
         id = identify
-        recyclerLiveData = hitRepository.makeApiCall(context, id)
+        recyclerLiveData = HitRepositoryImp().makeApiCall(context, id)
         return recyclerLiveData
     }
 

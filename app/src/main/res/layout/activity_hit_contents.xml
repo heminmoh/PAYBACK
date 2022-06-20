@@ -6,7 +6,7 @@
     <data>
 
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -18,34 +18,36 @@
         android:orientation="horizontal"
         android:layout_margin="10dp"
         android:background="@color/white"
-        tools:ignore="MissingConstraints">
+        >
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1.8"
+            android:layout_weight="1.5"
             android:text="@string/SearchField"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:textColor="@color/black"
             android:textStyle="bold"
+            android:gravity="center_vertical"
             android:textSize="@dimen/searchtextview"
-            android:layout_gravity="center_vertical"
-            android:layout_height="match_parent"></TextView>
+            android:layout_height="match_parent" />
         <EditText
             android:id="@+id/SearchEditText"
             android:layout_width="0dp"
-            android:layout_weight="5"
+            android:layout_weight="5.5"
             android:layout_height="match_parent"
             android:background="@drawable/search_edittext"
             android:textColor="@color/black"
             android:inputType="text"
-            android:paddingLeft="10dp"
+            android:paddingLeft="5dp"
             android:paddingRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:maxLines="1"
             android:singleLine="true"
             android:imeOptions="actionSearch"
             android:textStyle="bold"
+            android:gravity="center_vertical"
             android:textCursorDrawable="@color/black"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="4dp"/>
         <ImageView
@@ -53,20 +55,26 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
             android:layout_alignParentRight="true"
             android:src="@drawable/search" />
     </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="3px"
+            android:background="@color/gray_600" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/HitsRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="5dp"
         android:background="@color/white"
         tools:listitem="@layout/hit_item">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 </layout>
