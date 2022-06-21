@@ -34,7 +34,6 @@ import com.example.payback.models.HitModel
 import com.example.payback.utilities.CheckInternetConnection
 import com.example.payback.utilities.PayBackProgressDialog
 import com.example.payback.viewmodels.HitViewModel
-import java.lang.Exception
 
 
 class ContentFragment : Fragment() {
@@ -67,8 +66,7 @@ class ContentFragment : Fragment() {
         if(!checkConnectionInternetConnection) {
             Toast.makeText(this.context,"Check Network - Offline Mode", Toast.LENGTH_LONG).show()
         }
-//      var resource : String? =  this.arguments?.getString("Resource")
-      var value : String? =  this.arguments?.getString("Value")
+      val value : String? =  this.arguments?.getString("Value")
 
             searchEditText.setText(value)
 
@@ -92,7 +90,7 @@ class ContentFragment : Fragment() {
         requireActivity().onBackPressedDispatcher
             .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
-                    navController!!.navigate(R.id.action_contentFragment_to_mainFragment)
+                    navController.navigate(R.id.action_contentFragment_to_mainFragment)
                 }
             })
     }

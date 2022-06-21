@@ -14,12 +14,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.OnBackPressedDispatcher
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.payback.R
@@ -58,7 +55,7 @@ class DetailFragment : Fragment() {
                     val bundle = Bundle()
                     bundle.putString("Resource", "DetailFragment")
                     bundle.putString("Value", value)
-                    navController!!.navigate(R.id.action_detailFragment_to_contentFragment3,bundle)
+                    navController.navigate(R.id.action_detailFragment_to_contentFragment3,bundle)
                 }
             })
     }

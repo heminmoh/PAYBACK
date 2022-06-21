@@ -12,57 +12,64 @@
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="15dp"
-    android:layout_margin="5dp"
-    app:cardElevation="6dp">
+    android:layout_marginTop="2dp">
     <LinearLayout
         android:id="@+id/attributes"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:background="@color/red_700"
+        android:layout_height="480dp"
+        android:background="@color/white"
         android:fontFamily="@font/roboto_regular"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/like"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:paddingLeft="5dp"
+                
+                app:imageUrl="@{metadata.userImageURL}"
+                android:textStyle="bold"
+                android:src="@drawable/img"
+                android:layout_marginTop="3dp"
+                android:layout_gravity="center_vertical"
+                android:layoutDirection="ltr"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/UserNameTextView"
+                android:layout_width="0dp"
+                android:layout_weight="9"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="3dp"
+                android:lines="1"
+                android:paddingLeft="5dp"
+                android:text="@{metadata.user}"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="@dimen/username" />
+        </LinearLayout>
+
     <ImageView
         android:id="@+id/HitItemImage"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_margin="7dp"
-        app:imageUrl="@{metadata.previewURL}"
-        android:lines="1" />
+        android:layout_marginTop="5dp"
+        app:imageUrl="@{metadata.previewURL}" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
-        <ImageView
-            android:id="@+id/like"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:paddingLeft="10dp"
-            android:src="@drawable/usericon"
-            android:textStyle="bold"
-            android:layoutDirection="ltr"
-            android:textColor="@color/black"/>
-        <TextView
-            android:id="@+id/UserNameTextView"
-            android:layout_width="0dp"
-            android:layout_weight="9"
-            android:layout_height="40dp"
-            android:gravity="center_vertical"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:lines="1"
-            android:paddingLeft="10dp"
-            android:text="@{metadata.user}"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:fontFamily="@font/roboto_regular"
-            android:textSize="@dimen/username" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="70dp"
         android:orientation="horizontal">
         <ImageView
             android:id="@+id/tags"
@@ -74,23 +81,28 @@
             android:textStyle="bold"
             android:layoutDirection="ltr"
             android:textColor="@color/black"/>
+
         <TextView
             android:id="@+id/TagTextView"
             android:layout_width="0dp"
-            android:layout_weight="9"
-            android:layout_height="40dp"
-            android:paddingLeft="10dp"
-            android:gravity="center_vertical"
+            android:layout_height="match_parent"
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
-            android:lines="1"
-            android:text="@{metadata.tags}"
-            android:textColor="@color/white"
-            android:textStyle="bold"
+            android:layout_weight="9"
             android:fontFamily="@font/roboto_regular"
-            android:textSize="@dimen/tag" />
-    </LinearLayout>
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:paddingLeft="10dp"
+            android:text="@{metadata.tags}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/tag"
+            android:textStyle="bold" />
     </LinearLayout>
 
+    </LinearLayout>
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="5px"
+        android:background="@color/gray_600" />
 </androidx.cardview.widget.CardView>
 </layout>

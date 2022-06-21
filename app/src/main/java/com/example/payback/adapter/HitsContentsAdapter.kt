@@ -29,7 +29,7 @@ class HitsContentsAdapter  @Inject constructor (private val HitsContentList: Lis
     var context: Context? = null
     private lateinit var binding: HitItemBinding
      private lateinit var navController : NavController
-     var searchedData = searched
+     private var searchedData = searched
     @Inject
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):  HitViewHolder {
 

@@ -7,9 +7,15 @@ import com.example.payback.R
 import com.squareup.picasso.Picasso
 
 @BindingAdapter("imageUrl")
-fun loadImage(view: View,
-              imageUrl: String?) {
+fun loadImage(view: View,imageUrl: String?) {
     val image: ImageView = view as ImageView
-    Picasso.get().load(imageUrl).placeholder(R.drawable.loading).into(image)
+    if (imageUrl != null) {
+        if (imageUrl.isEmpty()) {
+            image.setImageResource(R.drawable.loading);
+        } else{
+            Picasso.get().load(imageUrl).placeholder(R.drawable.loading).into(image)
+
+        }
+    }
 
 }

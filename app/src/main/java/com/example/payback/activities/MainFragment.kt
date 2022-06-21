@@ -66,8 +66,7 @@ class MainFragment : Fragment(),View.OnClickListener {
                     val bundle = Bundle()
                     bundle.putString("Resource", "MainFragment")
                     bundle.putString("Value", "fruits")
-                    navController!!.navigate(R.id.action_mainFragment_to_contentFragment,bundle)
-//                    navController.navigate(R.id.action_mainFragment_to_contentFragment)
+                    navController.navigate(R.id.action_mainFragment_to_contentFragment,bundle)
                 }
 
             }
