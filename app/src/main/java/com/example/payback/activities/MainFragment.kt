@@ -23,7 +23,7 @@ import javax.inject.Inject
 
 class MainFragment : Fragment(),View.OnClickListener {
 
-    lateinit var navControler : NavController
+    private lateinit var navController : NavController
     @Inject
     lateinit var liveDataConnection : LiveDataInternetConnections
     private lateinit var textviewConnect : TextView
@@ -39,9 +39,9 @@ class MainFragment : Fragment(),View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navControler = Navigation.findNavController(view)
-        textviewConnect =   view.findViewById<TextView>(R.id.connected)
-        textViewDisconnect =  view.findViewById<TextView>(R.id.not_connected)
+        navController = Navigation.findNavController(view)
+        textviewConnect =   view.findViewById(R.id.connected)
+        textViewDisconnect =  view.findViewById(R.id.not_connected)
         view.findViewById<Button>(R.id.intentcall).setOnClickListener(this)
 
         liveDataConnection = activity?.let { LiveDataInternetConnections(it.application) }!!
@@ -62,7 +62,14 @@ class MainFragment : Fragment(),View.OnClickListener {
     override fun onClick(v: View?) {
             when(v!!.id)
             {
-                R.id.intentcall -> navControler!!.navigate(R.id.action_mainFragment_to_contentFragment)
+                R.id.intentcall ->{
+                    val bundle = Bundle()
+                    bundle.putString("Resource", "MainFragment")
+                    bundle.putString("Value", "fruits")
+                    navController!!.navigate(R.id.action_mainFragment_to_contentFragment,bundle)
+//                    navController.navigate(R.id.action_mainFragment_to_contentFragment)
+                }
+
             }
     }
 

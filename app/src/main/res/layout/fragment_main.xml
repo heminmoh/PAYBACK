@@ -20,6 +20,7 @@
             android:layout_width="305dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
+            android:textColor="@color/white"
             android:background="@color/light_blue_900"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/Btn_PAYBACK"

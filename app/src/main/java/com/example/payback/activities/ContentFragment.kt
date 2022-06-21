@@ -21,7 +21,10 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.payback.R
@@ -31,11 +34,12 @@ import com.example.payback.models.HitModel
 import com.example.payback.utilities.CheckInternetConnection
 import com.example.payback.utilities.PayBackProgressDialog
 import com.example.payback.viewmodels.HitViewModel
+import java.lang.Exception
 
 
 class ContentFragment : Fragment() {
     private lateinit var binding: FragmentContentBinding
-
+    private lateinit var navController : NavController
 
     private var checkConnectionInternetConnection: Boolean = false
     private var connectionInternetConnection= CheckInternetConnection()
@@ -46,18 +50,13 @@ class ContentFragment : Fragment() {
 
     private lateinit var progressDialog : PayBackProgressDialog
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         hitsRecycler = binding.HitsRecycler
+        navController = Navigation.findNavController(view)
+        imageSearch = view.findViewById(R.id.imgSearch)
+        searchEditText = view.findViewById(R.id.SearchEditText)
 
-        imageSearch = view.findViewById<ImageView>(R.id.imgSearch)
-        searchEditText = view.findViewById<EditText>(R.id.SearchEditText)
-        searchEditText.setText(R.string.fruits)
         hitsRecycler.layoutManager = LinearLayoutManager(this.context)
         checkConnectionInternetConnection = this.context?.let {
             connectionInternetConnection.checkForInternet(
@@ -68,8 +67,13 @@ class ContentFragment : Fragment() {
         if(!checkConnectionInternetConnection) {
             Toast.makeText(this.context,"Check Network - Offline Mode", Toast.LENGTH_LONG).show()
         }
-        hideKeyboard(searchEditText)
+//      var resource : String? =  this.arguments?.getString("Resource")
+      var value : String? =  this.arguments?.getString("Value")
+
+            searchEditText.setText(value)
+
         initViewModel(searchEditText.text.toString())
+        hideKeyboard(searchEditText)
 
         imageSearch.setOnClickListener {
             val searchedDataText = searchEditText.text.toString()
@@ -84,13 +88,20 @@ class ContentFragment : Fragment() {
                 false
             }
         }
-    }
 
+        requireActivity().onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    navController!!.navigate(R.id.action_contentFragment_to_mainFragment)
+                }
+            })
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentContentBinding.inflate(inflater, container, false)
+    ): View {
+            binding = FragmentContentBinding.inflate(inflater, container, false)
+
         return binding.root
     }
     private fun initViewModel(SearchedText : String)
@@ -99,10 +110,10 @@ class ContentFragment : Fragment() {
         this.context?.let { progressDialog.show(it,"Please Wait...") }
 
         val viewModel =  ViewModelProvider(this)[HitViewModel::class.java]
-        this.context?.let {
+        this.context?.let { it ->
             viewModel.getListObservable(it,SearchedText).observe(viewLifecycleOwner) {
                 if (it != null) {
-                    makeViewDesign(it)
+                    makeViewDesign(it,SearchedText)
                 } else {
                     Toast.makeText(this.context, R.string.NoDataFetched, Toast.LENGTH_SHORT).show()
                 }
@@ -111,9 +122,9 @@ class ContentFragment : Fragment() {
         }
     }
 
-    private fun makeViewDesign(hitsList : HitModel?)
+    private fun makeViewDesign(hitsList : HitModel?, searched : String)
     {
-        val adapter = hitsList?.hits?.let { HitsContentsAdapter(it) }
+        val adapter = hitsList?.hits?.let { HitsContentsAdapter(it,searched) }
         hitsRecycler.adapter = adapter
 
     }

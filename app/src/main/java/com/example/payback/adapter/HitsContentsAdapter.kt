@@ -24,17 +24,18 @@ import com.example.payback.models.Hits
 import javax.inject.Inject
 
 
-class HitsContentsAdapter  @Inject constructor (private val HitsContentList: List<Hits>) :RecyclerView.Adapter<HitViewHolder>() {
+class HitsContentsAdapter  @Inject constructor (private val HitsContentList: List<Hits>, searched : String) :RecyclerView.Adapter<HitViewHolder>() {
 
     var context: Context? = null
     private lateinit var binding: HitItemBinding
-     lateinit var navControler : NavController
+     private lateinit var navController : NavController
+     var searchedData = searched
     @Inject
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):  HitViewHolder {
 
         binding = HitItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         context = parent.context
-        navControler = Navigation.findNavController(parent)
+        navController = Navigation.findNavController(parent)
         return HitViewHolder(binding)
     }
     @Inject
@@ -52,8 +53,9 @@ class HitsContentsAdapter  @Inject constructor (private val HitsContentList: Lis
             builder.setMessage("You want to see more details...")
             builder.setPositiveButton(R.string.yes) { _, _ ->
                 val bundle = Bundle()
-                bundle.putParcelable("object", HitsContentList[position])
-                navControler!!.navigate(R.id.action_contentFragment_to_detailFragment,bundle)
+                bundle.putParcelable(R.string.`object`.toString(), HitsContentList[position])
+                bundle.putString("Value", searchedData)
+                navController.navigate(R.id.action_contentFragment_to_detailFragment,bundle)
             }
 
             builder.setNegativeButton(R.string.no) { dialog, _ -> dialog.dismiss() }
@@ -65,7 +67,6 @@ class HitsContentsAdapter  @Inject constructor (private val HitsContentList: Lis
         }
         return holder.bind(HitsContentList[position])
     }
-
 
 
 }

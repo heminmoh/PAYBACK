@@ -13,39 +13,54 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.OnBackPressedDispatcher
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.payback.R
 import com.example.payback.adapter.DetailHitItemAdapter
 import com.example.payback.databinding.FragmentDetailBinding
 import com.example.payback.models.Hits
 
 class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
-
+    private lateinit var navController : NavController
     private lateinit var detailRecycler : RecyclerView
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         detailRecycler = binding.DetailRecycler
         detailRecycler.layoutManager = LinearLayoutManager(this.context)
-
-        val hitObject : Hits? = this.arguments?.getParcelable("object")
+        navController = Navigation.findNavController(view)
+        val hitObject: Hits? = this.arguments?.getParcelable(R.string.`object`.toString())
+        val value: String? = this.arguments?.getString("Value")
         if (hitObject != null) {
             init(hitObject)
         }
+
+        requireActivity().onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    val bundle = Bundle()
+                    bundle.putString("Resource", "DetailFragment")
+                    bundle.putString("Value", value)
+                    navController!!.navigate(R.id.action_detailFragment_to_contentFragment3,bundle)
+                }
+            })
     }
     private fun init(detail : Hits)
     {
@@ -53,4 +68,7 @@ class DetailFragment : Fragment() {
         val adapter = DetailHitItemAdapter(detail)
         detailRecycler.adapter = adapter
     }
+
+
+
 }
