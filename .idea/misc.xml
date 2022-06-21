@@ -8,8 +8,11 @@
         <entry key="..\:/PAYBACK/coding-challenge-android/app/src/main/res/drawable/search_edittext.xml" value="0.146" />
         <entry key="..\:/PAYBACK/coding-challenge-android/app/src/main/res/layout/activity_hit_contents.xml" value="0.29906542056074764" />
         <entry key="..\:/PAYBACK/coding-challenge-android/app/src/main/res/layout/activity_hit_detail.xml" value="0.1" />
-        <entry key="..\:/PAYBACK/coding-challenge-android/app/src/main/res/layout/activity_main.xml" value="0.22447916666666667" />
+        <entry key="..\:/PAYBACK/coding-challenge-android/app/src/main/res/layout/activity_main.xml" value="0.17355371900826447" />
         <entry key="..\:/PAYBACK/coding-challenge-android/app/src/main/res/layout/detail_item.xml" value="0.14375" />
+        <entry key="..\:/PAYBACK/coding-challenge-android/app/src/main/res/layout/fragment_blank.xml" value="0.22447916666666667" />
+        <entry key="..\:/PAYBACK/coding-challenge-android/app/src/main/res/layout/fragment_content.xml" value="0.23958333333333334" />
+        <entry key="..\:/PAYBACK/coding-challenge-android/app/src/main/res/layout/fragment_detail.xml" value="0.23958333333333334" />
         <entry key="..\:/PAYBACK/coding-challenge-android/app/src/main/res/layout/fragment_main.xml" value="0.20416666666666666" />
         <entry key="..\:/PAYBACK/coding-challenge-android/app/src/main/res/layout/hit_item.xml" value="0.23958333333333334" />
         <entry key="..\:/PAYBACK/coding-challenge-android/app/src/main/res/layout/progress_dialog_view.xml" value="0.23958333333333334" />

@@ -11,27 +11,30 @@ package com.example.payback.adapter
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.payback.R
-import com.example.payback.activities.HitDetailActivity
-import com.example.payback.models.Hits
-import com.example.payback.databinding.HitItemBinding
 import com.example.payback.binding.HitViewHolder
+import com.example.payback.databinding.HitItemBinding
+import com.example.payback.models.Hits
 import javax.inject.Inject
 
 
- class HitsContentsAdapter  @Inject constructor (private val HitsContentList: List<Hits>) :RecyclerView.Adapter<HitViewHolder>() {
+class HitsContentsAdapter  @Inject constructor (private val HitsContentList: List<Hits>) :RecyclerView.Adapter<HitViewHolder>() {
 
     var context: Context? = null
     private lateinit var binding: HitItemBinding
+     lateinit var navControler : NavController
     @Inject
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):  HitViewHolder {
 
         binding = HitItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         context = parent.context
+        navControler = Navigation.findNavController(parent)
         return HitViewHolder(binding)
     }
     @Inject
@@ -48,9 +51,12 @@ import javax.inject.Inject
             builder.setTitle("Are You Sure?")
             builder.setMessage("You want to see more details...")
             builder.setPositiveButton(R.string.yes) { _, _ ->
-                val intent = Intent(context, HitDetailActivity::class.java)
-                intent.putExtra("object", HitsContentList[position])
-                context?.startActivity(intent)
+                val bundle = Bundle()
+                bundle.putParcelable("object", HitsContentList[position])
+                navControler!!.navigate(R.id.action_contentFragment_to_detailFragment,bundle)
+//                val intent = Intent(context, DetailFragment::class.java)
+//                intent.putExtra("object", HitsContentList[position])
+//                context?.startActivity(intent)
             }
 
             builder.setNegativeButton(R.string.no) { dialog, _ -> dialog.dismiss() }

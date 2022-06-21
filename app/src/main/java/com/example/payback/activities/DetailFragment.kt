@@ -9,34 +9,44 @@
 
 package com.example.payback.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
+import android.os.Parcelable
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.payback.R
 import com.example.payback.adapter.DetailHitItemAdapter
-import com.example.payback.databinding.ActivityHitDetailBinding
+import com.example.payback.databinding.FragmentDetailBinding
 import com.example.payback.models.Hits
 
-
-class HitDetailActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityHitDetailBinding
+class DetailFragment : Fragment() {
+    private lateinit var binding: FragmentDetailBinding
 
     private lateinit var detailRecycler : RecyclerView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_hit_detail)
 
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         detailRecycler = binding.DetailRecycler
-        detailRecycler.layoutManager = LinearLayoutManager(this)
+        detailRecycler.layoutManager = LinearLayoutManager(this.context)
 
-        val hitObject : Hits? = intent.getParcelableExtra("object")
+        val hitObject : Hits? = this.arguments?.getParcelable("object")
         if (hitObject != null) {
             init(hitObject)
         }
-
     }
     private fun init(detail : Hits)
     {
