@@ -11,9 +11,9 @@ fun loadImage(view: View,imageUrl: String?) {
     val image: ImageView = view as ImageView
     if (imageUrl != null) {
         if (imageUrl.isEmpty()) {
-            image.setImageResource(R.drawable.loading);
+            image.setImageResource(R.drawable.loading)
         } else{
-            Picasso.get().load(imageUrl).placeholder(R.drawable.loading).into(image)
+            Picasso.get().load(imageUrl).placeholder(R.drawable.loading).error(R.drawable.ic_launcher_foreground).into(image)
 
         }
     }
