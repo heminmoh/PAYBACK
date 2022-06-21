@@ -1,6 +1,6 @@
 /**
- * the detail activity for show data in detail  by using DetailHitItemAdapter
- * has been bound with ActivityHitDetailBinding
+ * the detail fragment for show data in detail  by using DetailHitItemAdapter
+ * has been bound with FragmentDetailBinding
  *  If access denied to data ?
  *  it use the cache data in Okhttp Process
  *  init function take an Hits object  and call make view by recycleView
@@ -10,7 +10,6 @@
 package com.example.payback.activities
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

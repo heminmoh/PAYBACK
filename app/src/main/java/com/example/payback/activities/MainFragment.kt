@@ -1,14 +1,12 @@
 
 /**
- * the Main activity for show data first page
+ * the Main Fragment for show data first page
  * By liveDataConnection check the network and show proportional result
  *
  * 2022-06-16 - 1630
  */
 
 package com.example.payback.activities
-
-import android.app.Application
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -30,25 +28,6 @@ class MainFragment : Fragment(),View.OnClickListener {
     lateinit var liveDataConnection : LiveDataInternetConnections
     private lateinit var textviewConnect : TextView
     private lateinit var textViewDisconnect : TextView
-
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-////        liveDataConnection = activity?.let { LiveDataInternetConnections(it.application) }!!
-////        textviewConnect.visibility = View.GONE
-////        textViewDisconnect.visibility = View.VISIBLE
-////
-////        liveDataConnection.observe(this) { isConnected ->
-////            if (isConnected) {
-////                textviewConnect.visibility = View.GONE
-////                textViewDisconnect.visibility = View.GONE
-////            }else {
-////                textviewConnect.visibility = View.GONE
-////                textViewDisconnect.visibility = View.VISIBLE
-////            }
-////        }
-//
-//
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

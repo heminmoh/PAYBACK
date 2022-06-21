@@ -1,7 +1,7 @@
 
 /**
- * the major activity for show data by using HitsContentsAdapter
- * has been bound with ActivityHitContentsBinding
+ * the major fragment for show data by using HitsContentsAdapter
+ * has been bound with FragmentContentBinding
  *  If access denied to data ?
  *  it use the cache data in Okhttp Process
  *  initViewModel function take a string and call api and make view by recycleView
@@ -21,8 +21,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.core.content.getSystemService
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView

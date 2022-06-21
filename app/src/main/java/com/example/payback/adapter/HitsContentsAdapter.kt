@@ -54,9 +54,6 @@ class HitsContentsAdapter  @Inject constructor (private val HitsContentList: Lis
                 val bundle = Bundle()
                 bundle.putParcelable("object", HitsContentList[position])
                 navControler!!.navigate(R.id.action_contentFragment_to_detailFragment,bundle)
-//                val intent = Intent(context, DetailFragment::class.java)
-//                intent.putExtra("object", HitsContentList[position])
-//                context?.startActivity(intent)
             }
 
             builder.setNegativeButton(R.string.no) { dialog, _ -> dialog.dismiss() }
