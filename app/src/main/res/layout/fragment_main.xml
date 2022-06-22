@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/intentcall"
+            android:id="@+id/IntentCallApi"
             android:layout_width="305dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
@@ -25,7 +25,7 @@
             android:fontFamily="@font/roboto_medium"
             android:text="@string/Btn_PAYBACK"
             android:textAllCaps="false"
-            android:textSize="@dimen/headersections">
+            android:textSize="@dimen/HeaderSections">
 
         </Button>
 
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:gravity="center"
-        android:text="Connected"
+        android:text="@string/Connected"
         android:textColor="#ff669900"
         android:textSize="@dimen/connection"
         android:textStyle="bold"
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:gravity="center"
-        android:text="No Connection"
+        android:text="@string/NoConnection"
         android:textColor="#ffcc0000"
         android:textSize="@dimen/connection"
         app:layout_constraintBottom_toBottomOf="parent"

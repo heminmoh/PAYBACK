@@ -43,7 +43,7 @@ class MainFragment : Fragment(),View.OnClickListener {
         navController = Navigation.findNavController(view)
         textviewConnect =   view.findViewById(R.id.connected)
         textViewDisconnect =  view.findViewById(R.id.not_connected)
-        view.findViewById<Button>(R.id.intentcall).setOnClickListener(this)
+        view.findViewById<Button>(R.id.IntentCallApi).setOnClickListener(this)
 
         liveDataConnection = activity?.let { LiveDataInternetConnections(it.application) }!!
         textviewConnect.visibility = View.GONE
@@ -70,7 +70,7 @@ class MainFragment : Fragment(),View.OnClickListener {
     override fun onClick(v: View?) {
             when(v!!.id)
             {
-                R.id.intentcall ->{
+                R.id.IntentCallApi ->{
                     val bundle = Bundle()
                     bundle.putString("Resource", "MainFragment")
                     bundle.putString("Value", "fruits")

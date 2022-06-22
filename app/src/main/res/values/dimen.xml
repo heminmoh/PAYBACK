@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="headersections">18dp</dimen>
-    <dimen name="username">16dp</dimen>
-    <dimen name="searchtextview">19dp</dimen>
-    <dimen name="tag">16dp</dimen>
-    <dimen name="connection">16dp</dimen>
-    <dimen name="title">20dp</dimen>
+    <dimen name="HeaderSections">18sp</dimen>
+    <dimen name="username">16sp</dimen>
+    <dimen name="SearchTextView">16sp</dimen>
+    <dimen name="tag">16sp</dimen>
+    <dimen name="connection">16sp</dimen>
+    <dimen name="title">20sp</dimen>
 
 
 

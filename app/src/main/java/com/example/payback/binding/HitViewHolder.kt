@@ -12,7 +12,8 @@ import com.example.payback.models.Hits
 import com.example.payback.databinding.HitItemBinding
 import javax.inject.Inject
 
-class HitViewHolder  @Inject constructor (private val binding: HitItemBinding) : RecyclerView.ViewHolder(binding.root) {
+class HitViewHolder  @Inject constructor (private val binding: HitItemBinding) : RecyclerView.ViewHolder(binding.root)
+{
     fun bind(HitsData: Hits) {
         binding.metadata = HitsData
     }

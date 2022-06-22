@@ -17,16 +17,11 @@ import com.example.payback.R
 class PayBackProgressDialog {
 
      lateinit var dialog: CustomDialog
-
-    fun show(context: Context): Dialog {
-        return show(context, null)
-    }
-
     fun show(context : Context, title: CharSequence?): Dialog {
         val inflater = (context as Activity).layoutInflater
         val view = inflater.inflate(R.layout.progress_dialog_view, null)
         val cpTitle = view.findViewById<View>(R.id.cp_title) as TextView
-        val cpCardView = view.findViewById<View>(R.id.cp_cardview) as CardView
+        val cpCardView = view.findViewById<View>(R.id.cp_CardView) as CardView
 
         if (title != null) {
             cpTitle.text = title
@@ -47,9 +42,7 @@ class PayBackProgressDialog {
         init {
 
             window?.decorView?.rootView?.setBackgroundResource(R.color.green_400)
-            window?.decorView?.setOnApplyWindowInsetsListener { _, insets ->
-                insets.consumeSystemWindowInsets()
-            }
+
         }
 
     }
