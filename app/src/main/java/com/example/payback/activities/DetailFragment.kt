@@ -29,6 +29,10 @@ class DetailFragment : Fragment() {
     private lateinit var navController : NavController
     private lateinit var detailRecycler : RecyclerView
 
+    val detailFragment = "DetailFragment"
+    val resource = "Resource"
+    val value = "Value"
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,7 +48,7 @@ class DetailFragment : Fragment() {
         detailRecycler.layoutManager = LinearLayoutManager(this.context)
         navController = Navigation.findNavController(view)
         val hitObject: Hits? = this.arguments?.getParcelable(R.string.`object`.toString())
-        val value: String? = this.arguments?.getString("Value")
+        val valueReceived: String? = this.arguments?.getString("Value")
         if (hitObject != null) {
             init(hitObject)
         }
@@ -53,8 +57,8 @@ class DetailFragment : Fragment() {
             .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     val bundle = Bundle()
-                    bundle.putString("Resource", "DetailFragment")
-                    bundle.putString("Value", value)
+                    bundle.putString(resource, detailFragment)
+                    bundle.putString(value, valueReceived)
                     navController.navigate(R.id.action_detailFragment_to_contentFragment3,bundle)
                 }
             })

@@ -17,8 +17,8 @@
     <string name="ImageDownload">ImageDownload</string>
     <string name="ImageComment">ImageComment</string>
     <string name="ImageLike">ImageLike</string>
-    <string name="ImageOfSearchIcon">imageofsearchicon</string>
-    <string name="Search">search</string>
+    <string name="ImageOfSearchIcon">ImageOfSearchIcon</string>
+    <string name="Search">search…</string>
     <string name="NoConnection">No Connection</string>
     <string name="Connected">Connected</string>
     <string name="ImageOfContent">ImageOfContent</string>
