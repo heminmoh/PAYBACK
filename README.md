@@ -10,9 +10,8 @@ The code challenge has been Done and I send you the result.
 
 ## Software architectural pattern :  MVVM architecture 
 ## Components: Coroutine,AsyncTask,Retrofit 2.0 ,LiveData,Android Navigation Component,Dagger 2, Picasso, ...
-## Tests :  Unit-Test for some functions
 ## All data in requests cached
-## Design Pattens: Singelton, Repository,Adapter
+## Tests :  includes some tests
 
 After receiving the coding challenge information, I preferred to be aware about the coding challenge needs and requests. Without a doubt, every project has both requested and non-requested requirements and I tried to consider these issues. MVVM architectural design pattern chooses to implement software. After, I analyzed the API information and objects. Consequently, I designed the models based on data type and attributes.     
 
