@@ -51,6 +51,7 @@ class ContentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         hitsRecycler = binding.HitsRecycler
         navController = Navigation.findNavController(view)
         imageSearch = view.findViewById(R.id.imgSearch)
@@ -98,6 +99,7 @@ class ContentFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
             binding = FragmentContentBinding.inflate(inflater, container, false)
 
         return binding.root

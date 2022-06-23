@@ -57,6 +57,7 @@
                 android:text=""
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
+                android:fontFamily="@font/roboto_regular"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
